@@ -1,0 +1,36 @@
+.video-container {
+    position: relative;
+    width: 600px;
+    max-width: 100%;
+  }
+  
+  video {
+    width: 100%;
+    display: block;
+    cursor: pointer; /* Allows clicking the video to toggle play/pause */
+  }
+  
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+  }
+  
+  .play-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  

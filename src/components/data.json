@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "image": "/assets/asset13.jpeg",
+      "name": "Solar Inverter 1.0KVA",
+      "price": "₦270,000",
+      "details": "A reliable 1.0KVA solar inverter perfect for small-scale energy needs."
+    },
+    {
+      "id": 2,
+      "image": "/assets/asset7.jpeg",
+      "name": "Deep Cycle Battery 150AH",
+      "price": "₦320,000",
+      "details": "A durable 150AH battery designed for optimal solar energy storage."
+    },
+    {
+      "id": 3,
+      "image": "/assets/asset6.jpeg",
+      "name": "Premium Solar Panel 300W",
+      "price": "₦400,000",
+      "details": "High-efficiency 300W solar panel ideal for residential and commercial use."
+    },
+    {
+      "id": 4,
+      "image": "/assets/asset8.jpeg",
+      "name": "Solar Street Light",
+      "price": "₦120,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    }
+  ]
+  
