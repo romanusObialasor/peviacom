@@ -136,12 +136,20 @@ const SubHead = styled.h2`
   font-family: "Exo", serif;
   margin: 0;
   font-size: 40px;
+  @media screen and (max-width: 375px) {
+    text-align: center;
+    font-size: 30px;
+  }
 `;
 
 const Cards = styled.div`
   display: flex;
   margin-top: 50px;
   flex-wrap: wrap;
+  @media screen and (max-width: 1024px) {
+    /* justify-content: center; */
+    justify-content: space-around;
+  }
   @media screen and (max-width: 768px) {
     margin-top: 30px;
     justify-content: center;
@@ -166,7 +174,7 @@ const CardHolder = styled.div`
       bottom: -38px;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     margin-bottom: 70px;
   }
 `;

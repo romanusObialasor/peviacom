@@ -71,6 +71,9 @@ const Container = styled.div`
 const Wrapper = styled.div`
   margin: 0 50px;
   padding-top: 120px;
+  @media screen and (max-width: 320px) {
+    margin: 0;
+  }
 `;
 
 const Head = styled.div`
@@ -84,12 +87,22 @@ const Head = styled.div`
     color: #23769e;
     font-family: "Exo", serif;
   }
+  @media screen and (max-width: 425px) {
+    justify-content: center;
+  }
 `;
 
 const SubHead = styled.h2`
   font-family: "Exo", serif;
   margin: 0;
   font-size: 40px;
+  @media screen and (max-width: 425px) {
+    font-size: 30px;
+    text-align: center;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 25px;
+  }
 `;
 
 const Products = styled.div`
@@ -97,6 +110,14 @@ const Products = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media screen and (max-width: 1024px) {
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
 `;
 
 const ProductCard = styled.div`
@@ -106,7 +127,11 @@ const ProductCard = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  margin-bottom: 18px;
   box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 1024px) {
+    margin: 20px;
+  }
 `;
 
 const ImageHolder = styled.div`

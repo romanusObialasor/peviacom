@@ -14,8 +14,10 @@ const Review = () => {
     speed: 500, // Transition speed
     slidesToShow: 1, // Number of slides to show
     slidesToScroll: 1, // Number of slides to scroll
-    autoplay: true, // Autoplay slides
-    autoplaySpeed: 5000, // Speed of autoplay#
+    //  autoplay: true, // Autoplay slides
+    //   autoplaySpeed: 5000, // Speed of autoplay#
+    arrows: false,
+
     customPaging: (i) => (
       <div
         style={{
@@ -171,11 +173,147 @@ const Review = () => {
           </Roller>
         </SliderHolder>
       </CarouselHolder>
+      <Cards>
+        <Wrapper>
+          <QuoteIcon>
+            <IoMdQuote />
+          </QuoteIcon>
+          <TextReview>
+            Peviacom transformed my home with their reliable solar solutions.
+            The installation process was seamless, and the system has
+            significantly reduced my electricity bills. I love their
+            professionalism and attention to detail. Highly recommended!
+          </TextReview>
+          <Bottom>
+            <Left>
+              <Image src="/assets/user1.jpeg" alt="userImage" />
+              <DetailHolder>
+                <Name className="name">Romanus Obi</Name>
+                <Location>Lagos, Nigeria</Location>
+              </DetailHolder>
+            </Left>
+            <Right>
+              <Rating>Rating(5/5) </Rating>
+              <StarIcon>
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </StarIcon>
+            </Right>
+          </Bottom>
+        </Wrapper>
+        <Wrapper>
+          <QuoteIcon>
+            <IoMdQuote />
+          </QuoteIcon>
+          <TextReview>
+            The solar inverter package I got from Peviacom has been fantastic.
+            The team was very professional during installation. The only reason
+            I'm giving 4 stars is because delivery took a bit longer than
+            expected. Otherwise, excellent service!
+          </TextReview>
+          <Bottom>
+            <Left>
+              <Image src="/assets/user3.jpg" alt="userImage" />
+              <DetailHolder>
+                <Name className="name">Rasheed Balogun</Name>
+                <Location>Abuja, Nigeria</Location>
+              </DetailHolder>
+            </Left>
+            <Right>
+              <Rating>Rating(5/5) </Rating>
+              <StarIcon>
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </StarIcon>
+            </Right>
+          </Bottom>
+        </Wrapper>
+
+        <Wrapper>
+          <QuoteIcon>
+            <IoMdQuote />
+          </QuoteIcon>
+          <TextReview>
+            Peviacom exceeded my expectations! Their solar panels are top-notch,
+            and their customer service is outstanding. Now I enjoy uninterrupted
+            power supply, and it's been a game-changer for my business.
+            Definitely worth every penny!
+          </TextReview>
+          <Bottom>
+            <Left>
+              <Image src="/assets/user2.jpeg" alt="userImage" />
+              <DetailHolder>
+                <Name className="name">Aisha Bello</Name>
+                <Location>Kano, Nigeria</Location>
+              </DetailHolder>
+            </Left>
+            <Right>
+              <Rating>Rating(5/5) </Rating>
+              <StarIcon>
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </StarIcon>
+            </Right>
+          </Bottom>
+        </Wrapper>
+        <Wrapper>
+          <QuoteIcon>
+            <IoMdQuote />
+          </QuoteIcon>
+          <TextReview>
+            I’m thrilled with Peviacom's solar solutions. Their products are
+            durable, efficient, and eco-friendly. The support team guided me
+            through every step of the process. My family now enjoys consistent
+            power supply, even during outages. Highly recommended!
+          </TextReview>
+          <Bottom>
+            <Left>
+              <Image src="/assets/user4.jpg" alt="userImage" />
+              <DetailHolder>
+                <Name className="name">Chinedu Okafor</Name>
+                <Location>Enugu, Nigeria</Location>
+              </DetailHolder>
+            </Left>
+            <Right>
+              <Rating>Rating(5/5) </Rating>
+              <StarIcon>
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </StarIcon>
+            </Right>
+          </Bottom>
+        </Wrapper>
+      </Cards>
     </Container>
   );
 };
 
 export default Review;
+
+const Cards = styled.div`
+  display: none;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    background-color: red;
+    display: none;
+    width: 92%;
+  }
+`;
 
 const QuoteIcon = styled.div`
   font-size: 50px;
@@ -233,7 +371,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   transition: all 300ms;
-
+  @media screen and (max-width: 768px) {
+    margin: 50px 0;
+    height: 300px;
+  }
   &:hover {
     color: rgba(255, 255, 255, 0.7);
     background-color: #1b1b1b;
@@ -285,6 +426,10 @@ const SubHead = styled.h2`
   font-family: "Exo", serif;
   margin: 0;
   font-size: 40px;
+  @media screen and (max-width: 375px) {
+    text-align: center;
+    font-size: 30px;
+  }
 `;
 
 const RollerWrapper = styled.div`
@@ -293,25 +438,43 @@ const RollerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    background-color: red;
+    flex-wrap: wrap;
+  }
 `;
 
 const Roller = styled.div`
   height: 500px;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    height: unset;
+  }
 `;
 
-const SliderHolder = styled(Slider)``;
+const SliderHolder = styled(Slider)`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
 
 const CarouselHolder = styled.div`
   width: 90%;
   margin-top: 60px;
+  @media screen and (max-width: 768px) {
+    background-color: red;
+  }
 `;
 
 const Container = styled.div`
   margin-bottom: 150px;
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 160px;
+  display: none;
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+    background-color: pink;
+  }
 `;

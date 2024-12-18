@@ -1,9 +1,16 @@
 import React from "react";
+import styled from "styled-components";
+
+const Topper = styled.svg`
+  @media screen and (max-width: 320px) {
+    width: 60px;
+  }
+`;
 
 export function TopHeadIcon() {
   return (
     <div>
-      <svg
+      <Topper
         width="90"
         height="46"
         viewBox="0 0 361 46"
@@ -17,7 +24,7 @@ export function TopHeadIcon() {
           stroke-linecap="round"
         />
         <circle cx="338" cy="23" r="23" fill="#23769E" />
-      </svg>
+      </Topper>
     </div>
   );
 }

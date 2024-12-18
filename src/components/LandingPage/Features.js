@@ -136,6 +136,9 @@ const ListCard = styled.div`
   justify-content: center;
   z-index: 10;
   width: 250px;
+  @media screen and (max-width: 425px) {
+    margin: 30px 0;
+  }
 `;
 
 const ListWrapper = styled.div`
@@ -143,6 +146,10 @@ const ListWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  flex-wrap: wrap;
+  @media screen and (max-width: 425px) {
+    /* background-color: red; */
+  }
 `;
 
 const Listing = styled.div`
@@ -156,6 +163,10 @@ const Listing = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  @media screen and (max-width: 425px) {
+    /* background-color: pink; */
+    height: fit-content;
+  }
 
   &:after {
     content: "";
@@ -203,6 +214,10 @@ const SubHead = styled.h2`
   font-family: "Exo", serif;
   margin: 0;
   font-size: 40px;
+  @media screen and (max-width: 375px) {
+    text-align: center;
+    font-size: 30px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -211,6 +226,9 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 96%;
   margin-top: 60px;
+  @media screen and (max-width: 1024px) {
+    justify-content: space-around;
+  }
 `;
 
 const Card = styled.div`
@@ -224,6 +242,7 @@ const Card = styled.div`
   background-color: #fff; /* Card background */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); // 0 6px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 40px;
   &:hover {
     transform: translateY(-10px); /* Lift effect on hover */
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */

@@ -91,11 +91,21 @@ const Right = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-left: 70px;
+  @media screen and (max-width: 768px) {
+    margin-left: unset;
+    margin-top: 100px;
+  }
+  @media screen and (max-width: 320px) {
+    flex: 0.7;
+  }
 `;
 
 const Rotate = styled.img`
   animation: ${revolve} 8s linear infinite;
   height: 180px;
+  @media screen and (max-width: 425px) {
+    height: 140px;
+  }
 `;
 
 const Logo = styled.img`
@@ -106,6 +116,10 @@ const Logo = styled.img`
   border-radius: 100px;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 425px) {
+    height: 50px;
+    width: 50px;
+  }
 `;
 
 const MiddleComp = styled.div`
@@ -120,12 +134,21 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   margin: 150px 0;
+  @media screen and (max-width: 768px) {
+    height: unset;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   height: 100%;
   margin: 0 30px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: 320px) {
+    margin-right: unset;
+  }
 `;
 
 const Left = styled.div`
@@ -134,6 +157,10 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    height: 500px;
+    flex: unset;
+  }
 `;
 
 const GridWrapper = styled.div`

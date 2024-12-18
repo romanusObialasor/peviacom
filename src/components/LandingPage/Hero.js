@@ -158,6 +158,7 @@ const Rotate = styled.div`
   @media screen and (max-width: 1024px) {
     left: unset;
     right: 5px;
+    /* display: none; */
   }
 `;
 

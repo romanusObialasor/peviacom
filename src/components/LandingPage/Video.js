@@ -25,6 +25,12 @@ const VideoWrapper = styled.video`
   width: 90%;
   height: 94vh;
   border-radius: 10px;
+  @media screen and (max-width: 1024px) {
+    height: fit-content;
+    background-color: unset;
+    width: 100%;
+    border-radius: 0;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -32,6 +38,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -41,4 +50,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 100px 0;
+  @media screen and (max-width: 1024px) {
+    padding: 0;
+  }
 `;

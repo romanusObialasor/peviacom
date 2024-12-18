@@ -72,6 +72,9 @@ const Date = styled.div`
 const AwardHolder = styled.div`
   text-align: center;
   margin: 0 70px;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 70px;
+  }
 `;
 
 const AwardWrapper = styled.div`
@@ -80,6 +83,11 @@ const AwardWrapper = styled.div`
   align-items: flex-end;
   position: relative;
   z-index: 1;
+  flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Head = styled.div`
@@ -101,4 +109,7 @@ const Container = styled.div`
   padding: 50px 0;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
