@@ -20,7 +20,7 @@ const LandingPage = () => {
       <Services />
       <Video />
       <Review />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

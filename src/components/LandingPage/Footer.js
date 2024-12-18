@@ -158,6 +158,12 @@ const TopComponent = styled.div`
   border-radius: 20px;
   overflow: hidden;
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    z-index: -1;
+    height: 500px;
+    top: -360px;
+  }
 `;
 
 const TopWrapper = styled.div`
@@ -168,6 +174,13 @@ const TopWrapper = styled.div`
   border-radius: 15px;
   justify-content: space-around;
   border: 2px dashed rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 768px) {
+    position: relative;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 const TopText = styled.div`
@@ -179,7 +192,17 @@ const TopText = styled.div`
   color: white;
 `;
 
-const TopImage = styled.img``;
+const TopImage = styled.img`
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+  }
+  @media screen and (max-width: 425px) {
+    right: 0;
+    bottom: -30px;
+  }
+`;
 
 const TopButton = styled.div`
   background: #1b1b1b;
@@ -189,6 +212,9 @@ const TopButton = styled.div`
   color: white;
   border-radius: 100px;
   cursor: pointer;
+  @media screen and (max-width: 375px) {
+    padding-right: 0;
+  }
 `;
 
 const LeftIcon = styled.div`
@@ -197,20 +223,39 @@ const LeftIcon = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 10px;
   border-radius: 100px;
+  @media screen and (max-width: 375px) {
+    font-size: 14px;
+  }
 `;
 
 const ButtonHolder = styled.div`
   margin: 0 14px;
+  @media screen and (max-width: 375px) {
+    margin-left: 6px;
+    width: fit-content;
+  }
 `;
 
 const ButtonHead = styled.div`
   font-weight: 600;
+  @media screen and (max-width: 375px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 375px) {
+    font-size: 12px;
+  }
 `;
 
 const ButtonSpan = styled.div`
   margin-top: 5px;
   opacity: 0.7;
   font-weight: lighter;
+  @media screen and (max-width: 375px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 375px) {
+    font-size: 10px;
+  }
 `;
 
 const Container = styled.div`
@@ -226,6 +271,9 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    z-index: -1;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -235,10 +283,21 @@ const Wrapper = styled.div`
   justify-content: space-between;
   flex: 1;
   margin-top: 50px;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: fit-content;
+    flex: unset;
+  }
 `;
 
 const Box = styled.div`
   max-width: 280px;
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 70px;
+    /* background-color: blue; */
+  }
 `;
 
 const Header = styled.div`
@@ -301,6 +360,7 @@ const Form = styled.div`
   display: flex;
   align-items: center;
   margin-top: 20px;
+  width: 100%;
 `;
 
 const Input = styled.input`
@@ -315,10 +375,15 @@ const Input = styled.input`
   opacity: 0.7;
   font-size: 16px;
   padding-left: 20px;
+  @media screen and (max-width: 375px) {
+    width: 250px;
+  }
+  @media screen and (max-width: 320px) {
+    width: 200px;
+  }
 `;
 
 const Button = styled.div`
-  background-color: red;
   border-radius: 5px;
   cursor: pointer;
   height: 55px;

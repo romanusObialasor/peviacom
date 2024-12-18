@@ -303,14 +303,14 @@ const Review = () => {
 export default Review;
 
 const Cards = styled.div`
-  display: none;
   flex-wrap: wrap;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
+  display: none;
+
   @media screen and (max-width: 768px) {
-    background-color: red;
-    display: none;
+    display: block;
     width: 92%;
   }
 `;
@@ -325,6 +325,9 @@ const TextReview = styled.div`
   line-height: 1.3;
   letter-spacing: 1px;
   font-weight: 300;
+  @media screen and (max-width: 425px) {
+    font-size: 14px;
+  }
   /* margin-top: 20px; */
 `;
 
@@ -333,6 +336,12 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
+  @media screen and (max-width: 375px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 50px;
+  }
 `;
 
 const Image = styled.img`
@@ -352,6 +361,9 @@ const Name = styled.div`
   color: black;
   font-family: "exo", sans-serif;
   transition: all 300ms;
+  @media screen and (max-width: 425px) {
+    font-size: 16px;
+  }
 `;
 
 const Location = styled.div`
@@ -375,6 +387,10 @@ const Wrapper = styled.div`
     margin: 50px 0;
     height: 300px;
   }
+
+  @media screen and (max-width: 375px) {
+    height: 400px;
+  }
   &:hover {
     color: rgba(255, 255, 255, 0.7);
     background-color: #1b1b1b;
@@ -391,6 +407,9 @@ const Left = styled.div`
 
 const Right = styled.div`
   text-align: right;
+  @media screen and (max-width: 375px) {
+    margin-top: 20px;
+  }
 `;
 
 const Rating = styled.div``;
@@ -426,7 +445,7 @@ const SubHead = styled.h2`
   font-family: "Exo", serif;
   margin: 0;
   font-size: 40px;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     text-align: center;
     font-size: 30px;
   }
@@ -439,7 +458,6 @@ const RollerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   @media screen and (max-width: 768px) {
-    background-color: red;
     flex-wrap: wrap;
   }
 `;
@@ -472,9 +490,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 160px;
-  display: none;
   @media screen and (max-width: 768px) {
     margin-top: 50px;
-    background-color: pink;
+  }
+  @media screen and (max-width: 425px) {
+    padding-bottom: 270px;
   }
 `;
