@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 const App = () => {
   return (
     <Router>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
       </Routes>

@@ -6,59 +6,47 @@ import styled, { keyframes } from "styled-components";
 import { DefaultButton } from "../Actions";
 
 const Header = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
+  const [test, setTest] = useState(false);
 
   const handleChange = (event) => {
-    setIsChecked(event.target.checked);
-    const menuWrapper = document.getElementById("menuWrapper");
+    setIsBackgroundVisible((prev) => !prev);
+    setTest(event.target.checked);
+
     const menu = document.getElementById("menu");
     const icon = document.getElementById("icon");
     const icon1 = document.getElementById("icon1");
 
-    // final
-
-    if (!isChecked) {
-      if (menuWrapper) {
-        menuWrapper.style.cssText = `
+    if (!test) {
+      if (menu || icon) {
+        menu.style.cssText = `
           left: 0;
         `;
         icon.style.cssText = `
-           stroke: white;
+        stroke: white;
          `;
         icon1.style.cssText = `
             stroke: white;
           `;
-        menu.style.cssText = `
-          width: 460px;
-          @media screen and (max-width: 320px) {
-          width: 200px
-          color: red;
-  } z 6758
-        `;
       }
     }
     // initial
     else {
-      if (menuWrapper) {
-        menuWrapper.style.cssText = `
-          opacity: 0;
-          left: -460px;
-
-  `;
-        //
+      if (menu || icon) {
+        menu.style.cssText = `
+            left: -480px;
+        `;
 
         icon.style.cssText = `
-      stroke: #1b1b1b;
-  `;
+            stroke: #1b1b1b;
+         `;
         icon1.style.cssText = `
-      stroke: #1b1b1b;
-  `;
-        menu.style.cssText = `
-          
+            stroke: #1b1b1b;
         `;
       }
     }
   };
+
   return (
     <Container>
       <Wrapper>
@@ -85,17 +73,13 @@ const Header = () => {
           </Button>
           <DefaultButton text="Lets Talk" show />
         </Buttons>
-        <StyledWrapper
-          onClick={() => {
-            // document.getElementById("menuId").style.color = "blue";
-          }}
-        >
+        <StyledWrapper>
           <label className="hamburger" htmlFor="myCheckbox">
             <input
               type="checkbox"
               id="myCheckbox"
               value="Example Value"
-              checked={isChecked}
+              checked={isBackgroundVisible}
               onChange={handleChange}
             />
             <svg viewBox="0 0 32 32">
@@ -108,32 +92,36 @@ const Header = () => {
             </svg>
           </label>
         </StyledWrapper>
-        <MenuWrapper id="menuWrapper">
-          <Menu id="menu">
-            <InnerWrapper>
-              <MenuLogo src="/assets/asset1.png" alt="logo" />
-              <MenuLinker>
-                <Links>Home</Links>
-                <Links>Products</Links>
-                <Links>About</Links>
-                <Links>Services</Links>
-                <Links>Blog</Links>
-              </MenuLinker>
-              <MenuButtons>
-                <Button>
-                  <PiShoppingCartThin />
-                </Button>
-                <Button
-                  style={{
-                    marginRight: "20px",
-                  }}
-                >
-                  <CiLocationOn />
-                </Button>
-              </MenuButtons>
-            </InnerWrapper>
-          </Menu>
-        </MenuWrapper>
+        <Background
+          id="background"
+          className={isBackgroundVisible ? "show" : "vanish"}
+        >
+          hello world
+        </Background>
+        <Menu id="menu">
+          <InnerWrapper>
+            <MenuLogo src="/assets/asset1.png" alt="logo" />
+            <MenuLinker>
+              <Links>Home</Links>
+              <Links>Products</Links>
+              <Links>About</Links>
+              <Links>Services</Links>
+              <Links>Blog</Links>
+            </MenuLinker>
+            <MenuButtons>
+              <Button>
+                <PiShoppingCartThin />
+              </Button>
+              <Button
+                style={{
+                  marginRight: "20px",
+                }}
+              >
+                <CiLocationOn />
+              </Button>
+            </MenuButtons>
+          </InnerWrapper>
+        </Menu>
       </Wrapper>
     </Container>
   );
@@ -141,9 +129,47 @@ const Header = () => {
 
 export default Header;
 
-// const MenuWrapper = styled.div``
+const shower = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
-// const MenuWrapper = styled.div``
+const vanish = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
+const Background = styled.div`
+  position: fixed;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 300ms ease, visibility 300ms ease;
+  visibility: hidden;
+  opacity: 0;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    animation: ${shower} 500ms linear;
+  }
+
+  &.vanish {
+    animation: ${vanish} 500ms linear;
+  }
+`;
 
 const MenuButtons = styled.div`
   display: flex;
@@ -156,6 +182,9 @@ const MenuButtons = styled.div`
 const MenuLogo = styled.img`
   width: 300px;
   margin-left: 20px;
+  @media screen and (max-width: 425px) {
+    width: 200px;
+  }
 `;
 
 const MenuLinker = styled.div`
@@ -176,35 +205,26 @@ const Menu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  z-index: 1000;
-`;
-
-const MenuWrapper = styled.div`
-  position: fixed;
-  left: -460px;
-  bottom: 0;
+  z-index: 10;
+  position: absolute;
+  left: -480px;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  width: 480px;
   transition: all 500ms;
 
-  &:before {
-    content: "";
-    position: fixed;
-    top: 0;
-    background: rgba(0, 0, 0, 0.5);
-    /* background-color: ; */
-    backdrop-filter: blur(5.6px);
-    color: white;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 70px;
   }
 `;
 
 const StyledWrapper = styled.div`
-  z-index: 1;
+  z-index: 100;
+  @media screen and (max-width: 425px) {
+    stroke-width: 2;
+  }
   .hamburger {
     cursor: pointer;
   }
@@ -214,9 +234,7 @@ const StyledWrapper = styled.div`
   }
 
   .hamburger svg {
-    /* The size of the SVG defines the overall size */
     height: 3em;
-    /* Define the transition for transforming the SVG */
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -226,9 +244,12 @@ const StyledWrapper = styled.div`
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 3;
-    /* Define the transition for transforming the Stroke */
     transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
       stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    @media screen and (max-width: 425px) {
+      stroke-width: 2;
+    }
   }
 
   .line-top-bottom {
@@ -250,7 +271,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  /* padding: 30px; */
   width: 90%;
 `;
 
@@ -259,17 +279,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100px;
-  /* padding: 30px; */
-  width: fit-content;
   width: 100%;
-  /* position: absolute; */
-  @media screen and (max-width: 1024px) {
-  }
 `;
 
 const LogoHolder = styled.div`
   height: 100%;
   flex: 0.4;
+  @media screen and (max-width: 425px) {
+    height: 80%;
+  }
 `;
 
 const Logo = styled.img`
@@ -278,10 +296,10 @@ const Logo = styled.img`
 
 const Linker = styled.div`
   display: flex;
-  flex: 1;
-  display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+
   @media screen and (max-width: 1024px) {
     display: none;
   }
@@ -300,6 +318,7 @@ const Links = styled(Link)`
   &:hover {
     opacity: 1;
   }
+
   @media screen and (max-width: 1024px) {
     color: white;
     margin-top: 20px;
@@ -347,11 +366,3 @@ const Button = styled.div`
     margin-right: 30px;
   }
 `;
-
-// const Container = styled.div``;
-
-// const Container = styled.div``;
-
-// const Container = styled.div``;
-
-// const Container = styled.div``;
