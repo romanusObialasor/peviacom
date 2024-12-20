@@ -222,6 +222,10 @@ const Menu = styled.div`
 
 const StyledWrapper = styled.div`
   z-index: 100;
+  display: none;
+  @media screen and (max-width: 1024px) {
+    display: block;
+  }
   @media screen and (max-width: 425px) {
     stroke-width: 2;
   }
