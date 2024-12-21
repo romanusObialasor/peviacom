@@ -12,6 +12,9 @@ const revolve = keyframes`
     }
   `;
 const Hero = () => {
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Container>
       <Left>

@@ -33,7 +33,7 @@ const Review = () => {
   };
 
   return (
-    <Container>
+    <Container id="reviews">
       <Head>
         <TopHeadIcon />
         <span>Customer Reviews</span>

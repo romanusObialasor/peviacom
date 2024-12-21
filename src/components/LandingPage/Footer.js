@@ -6,9 +6,13 @@ import { GrSend } from "react-icons/gr";
 import { IoArrowForward } from "react-icons/io5";
 import { LiaHeadsetSolid } from "react-icons/lia";
 import { SlSocialFacebook } from "react-icons/sl";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Footer = () => {
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Container>
       <TopComponent>
@@ -35,31 +39,50 @@ const Footer = () => {
             communities, businesses, and projects with sustainable technologies.
           </Text>
           <Icons>
-            <Icon>
+            <Icon
+              href="https://www.facebook.com/share/1MzrC3fi2D/?mibextid=LQQJ4d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <SlSocialFacebook />
             </Icon>
-            <Icon>
+            <Icon
+              href="https://x.com/peviacomng24?t=YHrrt-2iE-9o7v16AHPIwQ&s=09"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <CiTwitter />
             </Icon>
-            <Icon>
+            <Icon
+              href="https://www.instagram.com/peviacomng24?igsh=azN6MHVqZGlnNnpr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram />
             </Icon>
           </Icons>
         </Box>
         <Box>
           <Header>Company</Header>
-          <Text>
+          <Text
+            onClick={() => {
+              scrollToSection("header");
+              console.log("red");
+            }}
+          >
             <Arrow>
               <IoArrowForward />{" "}
             </Arrow>
             <span>Home</span>
           </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Products</span>
-          </Text>
+          <Link to="/productPage">
+            <Text>
+              <Arrow>
+                <IoArrowForward />{" "}
+              </Arrow>
+              <span>Products</span>
+            </Text>
+          </Link>
           <Text>
             <Arrow>
               <IoArrowForward />{" "}
@@ -71,12 +94,6 @@ const Footer = () => {
               <IoArrowForward />{" "}
             </Arrow>
             <span>Services</span>
-          </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Blog</span>
           </Text>
           <Text>
             <Arrow>
@@ -327,12 +344,14 @@ const Text = styled.div`
   font-size: 15px;
   display: flex;
   align-items: center;
+
   span {
     margin-left: 10px;
     font-weight: 300;
     font-size: 16px;
     padding: 5px 0;
     cursor: pointer;
+    text-decoration: unset;
   }
 `;
 
@@ -341,13 +360,14 @@ const Icons = styled.div`
   margin-top: 30px;
 `;
 
-const Icon = styled.div`
+const Icon = styled.a`
   padding: 18px;
   background-color: white;
   border-radius: 50px;
   margin-right: 16px;
   line-height: 0;
   cursor: pointer;
+  color: unset;
 `;
 
 const Arrow = styled.div`

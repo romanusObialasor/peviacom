@@ -14,7 +14,7 @@ const revolve = keyframes`
 
 const About = () => {
   return (
-    <Container>
+    <Container id="about">
       <Wrapper>
         <Left>
           <GridWrapper>

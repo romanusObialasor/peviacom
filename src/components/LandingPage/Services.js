@@ -8,7 +8,7 @@ import { PiSolarPanelThin } from "react-icons/pi";
 
 const Services = () => {
   return (
-    <Container>
+    <Container id="services">
       <Head>
         <TopHeadIcon />
         <span>Services</span>

@@ -38,6 +38,7 @@ const Action = styled.div`
   /* width: fit-content; */
   height: 60px;
   width: 180px;
+  text-decoration: unset;
   span {
     margin-right: 10px;
     z-index: 1;
@@ -85,8 +86,15 @@ const pulse = keyframes`
 `;
 
 export function VideoButton() {
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <Wrapper>
+    <Wrapper
+      onClick={() => {
+        scrollToSection("video");
+      }}
+    >
       <Circle>
         <IoPlay />
       </Circle>

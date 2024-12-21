@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Video = () => {
   return (
-    <Container>
+    <Container id="video">
       <Wrapper>
         <VideoWrapper controls autoplay loop muted poster="/assets/about3.jpg">
           <source src="/assets/inverter.mp4" type="video/mp4" />

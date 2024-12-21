@@ -8,6 +8,13 @@ import { DefaultButton } from "../Actions";
 const Header = () => {
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [test, setTest] = useState(false);
+  const phoneNumber = "+2347037102658";
+
+  const createWhatsAppLink = () => {
+    const message = `Hi there, I would love to discuss the products offered by Peviacom in more detail`;
+    const encodedMessage = encodeURIComponent(message);
+    return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  };
 
   const handleChange = (event) => {
     setIsBackgroundVisible((prev) => !prev);
@@ -46,19 +53,49 @@ const Header = () => {
       }
     }
   };
-
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <Container>
+    <Container id="header">
       <Wrapper>
         <LogoHolder>
           <Logo src="/assets/asset1.png" alt="logo" />
         </LogoHolder>
         <Linker>
-          <Links>Home</Links>
-          <Links>Products</Links>
-          <Links>About</Links>
-          <Links>Services</Links>
-          <Links>Blog</Links>
+          <Links to="/">Home</Links>
+          <Links
+            to="/"
+            onClick={() => {
+              scrollToSection("product");
+            }}
+          >
+            Products
+          </Links>
+          <Links
+            to="/"
+            onClick={() => {
+              scrollToSection("about");
+            }}
+          >
+            About
+          </Links>
+          <Links
+            to="/"
+            onClick={() => {
+              scrollToSection("services");
+            }}
+          >
+            Services
+          </Links>
+          <Links
+            to="/"
+            onClick={() => {
+              scrollToSection("reviews");
+            }}
+          >
+            Reviews
+          </Links>
         </Linker>
         <Buttons>
           <Button>
@@ -71,7 +108,13 @@ const Header = () => {
           >
             <CiLocationOn />
           </Button>
-          <DefaultButton text="Lets Talk" show />
+          <a
+            href={createWhatsAppLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <DefaultButton text="Lets Talk" show />
+          </a>
         </Buttons>
         <StyledWrapper>
           <label className="hamburger" htmlFor="myCheckbox">
@@ -102,11 +145,11 @@ const Header = () => {
           <InnerWrapper>
             <MenuLogo src="/assets/asset1.png" alt="logo" />
             <MenuLinker>
-              <Links>Home</Links>
+              <Links to="/">Home</Links>
               <Links>Products</Links>
               <Links>About</Links>
               <Links>Services</Links>
-              <Links>Blog</Links>
+              <Links>Reviews</Links>
             </MenuLinker>
             <MenuButtons>
               <Button>
@@ -355,6 +398,9 @@ const Buttons = styled.div`
   align-items: center;
   @media screen and (max-width: 1024px) {
     display: none;
+  }
+  a {
+    text-decoration: none !important;
   }
 `;
 

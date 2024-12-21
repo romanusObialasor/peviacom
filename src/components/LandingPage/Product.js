@@ -5,6 +5,7 @@ import { PiShoppingCartThin } from "react-icons/pi";
 import { FaRegEye } from "react-icons/fa";
 import data from "../data.json";
 import { DefaultButton } from "../Actions";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const name = "All In One";
@@ -18,7 +19,7 @@ const Product = () => {
     return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
   return (
-    <Container>
+    <Container id="product">
       <Wrapper>
         <Head>
           <TopHeadIcon />
@@ -52,7 +53,7 @@ const Product = () => {
             </ProductCard>
           ))}
         </Products>
-        <Linker>
+        <Linker to="/productPage">
           <DefaultButton text="See More" />
         </Linker>
       </Wrapper>
@@ -214,10 +215,11 @@ const View = styled.div`
   cursor: pointer;
 `;
 
-const Linker = styled.div`
+const Linker = styled(Link)`
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  text-decoration: none;
 `;
 
 // const Container = styled.div``
