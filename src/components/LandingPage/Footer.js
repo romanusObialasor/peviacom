@@ -1,5 +1,5 @@
 import { Checkbox } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { CiTwitter } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { GrSend } from "react-icons/gr";
@@ -8,11 +8,76 @@ import { LiaHeadsetSolid } from "react-icons/lia";
 import { SlSocialFacebook } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import emailjs from "emailjs-com";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setIsEmailValid(true);
+    // Reset validation when user types
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setIsEmailValid(false);
+      return;
+    }
+
+    if (!isChecked) {
+      alert("Please agree to the terms and conditions.");
+      return;
+    }
+
+    // EmailJS configuration
+    const templateParams = {
+      to_email: "robialasor5@gmail.com", // Replace with your email
+      from_email: email,
+      message: `Hello, this is my email (${email}). I am open for notifications from you concerning your product.`,
+    };
+
+    emailjs
+      .send(
+        "service_gfzsfki", // Replace with your EmailJS service ID
+        "template_ft39o4e", // Replace with your EmailJS template ID
+        templateParams,
+        "K2HhsBBn2P6wrvZ5y" // Replace with your EmailJS user ID
+      )
+      .then(
+        (response) => {
+          alert("Email sent successfully!");
+          setEmail(""); // Reset email input
+          setIsChecked(false); // Reset checkbox
+        },
+        (error) => {
+          alert("Failed to send email. Please try again.");
+        }
+      );
+  };
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const items = [
+    "Solar Power Solutions",
+    "Solar Inverters",
+    "Solar Panels",
+    "SMF Batteries",
+    "Solar Boreholes",
+    "Solar Street Lights",
+  ];
+
   return (
     <Container>
       <TopComponent>
@@ -65,9 +130,9 @@ const Footer = () => {
         <Box>
           <Header>Company</Header>
           <Text
+            to="/"
             onClick={() => {
               scrollToSection("header");
-              console.log("red");
             }}
           >
             <Arrow>
@@ -75,87 +140,92 @@ const Footer = () => {
             </Arrow>
             <span>Home</span>
           </Text>
-          <Link to="/productPage">
-            <Text>
-              <Arrow>
-                <IoArrowForward />{" "}
-              </Arrow>
-              <span>Products</span>
-            </Text>
-          </Link>
-          <Text>
+
+          <Text
+            onClick={() => {
+              scrollToSection("product");
+            }}
+          >
+            <Arrow>
+              <IoArrowForward />{" "}
+            </Arrow>
+            <span>Products</span>
+          </Text>
+          <Text
+            onClick={() => {
+              scrollToSection("about");
+            }}
+          >
             <Arrow>
               <IoArrowForward />{" "}
             </Arrow>
             <span>About</span>
           </Text>
-          <Text>
+          <Text
+            onClick={() => {
+              scrollToSection("services");
+            }}
+          >
             <Arrow>
               <IoArrowForward />{" "}
             </Arrow>
             <span>Services</span>
           </Text>
-          <Text>
+          <Text
+            onClick={() => {
+              scrollToSection("reviews");
+            }}
+          >
             <Arrow>
               <IoArrowForward />{" "}
             </Arrow>
-            <span>Contact us</span>
+            <span>Reviews</span>
           </Text>
         </Box>
         <Box>
           <Header>Our Services</Header>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Solar Power Solutions</span>
-          </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Solar Inverters</span>
-          </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Solar Panels</span>
-          </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>SMF Batteries</span>
-          </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Solar Boreholes</span>
-          </Text>
-          <Text>
-            <Arrow>
-              <IoArrowForward />{" "}
-            </Arrow>
-            <span>Solar Street Lights</span>
-          </Text>
+          {items.map((item, index) => (
+            <Link
+              to="/about_Page"
+              key={index}
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              {" "}
+              {/* Route to the about_Page */}
+              <Text>
+                <Arrow>
+                  <IoArrowForward />{" "}
+                </Arrow>
+                <span>{item}</span>
+              </Text>
+            </Link>
+          ))}
         </Box>
-        <Right>
+        <Right onSubmit={handleSubmit}>
           <Header>Subscribe</Header>
           <Form>
-            <Input placeholder="Enter your email" />
-            <Button>
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <Button type="submit" disabled={!isChecked || !email}>
               <GrSend />
             </Button>
           </Form>
           <Agree>
             <Check
+              type="checkbox"
+              checked={isChecked}
+              onChange={(e) => setIsChecked(e.target.checked)}
               style={{
                 marginLeft: "-11px",
               }}
             />
-            <span>I agree to the terms and conditions</span>
+            <label>I agree to the terms and conditions</label>
           </Agree>
         </Right>
       </Wrapper>
@@ -228,7 +298,6 @@ const TopButton = styled.div`
   padding: 16px 20px;
   color: white;
   border-radius: 100px;
-  cursor: pointer;
   @media screen and (max-width: 375px) {
     padding-right: 0;
   }
@@ -403,7 +472,7 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   height: 55px;
@@ -420,13 +489,13 @@ const Agree = styled.div`
   display: flex;
   align-items: center;
 
-  span {
+  label {
     color: white;
     opacity: 0.4;
   }
 `;
 
-const Right = styled.div``;
+const Right = styled.form``;
 
 const Check = styled(Checkbox)``;
 

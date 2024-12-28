@@ -5,6 +5,7 @@ import { MdOutlineEnergySavingsLeaf } from "react-icons/md";
 import { LiaCarBatterySolid } from "react-icons/lia";
 import { SlEnergy } from "react-icons/sl";
 import { PiSolarPanelThin } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -31,7 +32,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText>Read more</ButtonText>
+              <ButtonText to="/about_page">Read more</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -51,7 +52,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText>Read more</ButtonText>
+              <ButtonText to="/about_page">Read more</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -71,7 +72,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText>Read more</ButtonText>
+              <ButtonText to="/about_page">Read more</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -92,7 +93,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText>Read more</ButtonText>
+              <ButtonText to="/about_page">Read more</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -270,7 +271,9 @@ const Read = styled.div`
   }
 `;
 
-const ButtonText = styled.div`
+const ButtonText = styled(Link)`
   position: absolute;
-  z-index: 100;
+  text-decoration: none;
+  color: unset;
+  /* z-index: 100; */
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { TopHeadIcon } from "../SVG/SVGs";
 import { DefaultButton } from "../Actions";
+import { Link } from "react-router-dom";
 
 const revolve = keyframes`
     from{
@@ -44,7 +45,14 @@ const About = () => {
             products—we provide tailored solutions to meet your unique energy
             needs.
           </Text>
-          <DefaultButton text="Learn More" />
+          <Link
+            to="about_page"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <DefaultButton text="Learn More" />
+          </Link>
         </Right>
       </Wrapper>
     </Container>

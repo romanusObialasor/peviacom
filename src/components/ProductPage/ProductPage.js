@@ -4,6 +4,8 @@ import { DefaultButton } from "../Actions";
 import "./Product.css";
 import AllProducts from "./AllProductPage";
 import SearchInput from "./SearchInput";
+import Footer from "../LandingPage/Footer";
+// import Header from "../LandingPage/Header";
 
 const images = [
   "/assets/services1.jpg",
@@ -22,6 +24,7 @@ const ProductPage = () => {
   }, []);
   return (
     <Container>
+      {/* <Header /> */}
       <TopWrapper>
         <Left>
           <LeftWrapper>
@@ -96,6 +99,7 @@ const ProductPage = () => {
           </Products>
         </BottomWrapper>
       </Bottom>
+      <Footer />
     </Container>
   );
 };
@@ -133,6 +137,7 @@ const BottomWrapper = styled.div`
 
 const Bottom = styled.div`
   background-color: #f9f9f9;
+  padding-bottom: 300px;
 `;
 
 // const Container = styled.div``;

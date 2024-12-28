@@ -1,11 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { PiShoppingCartThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { DefaultButton } from "../Actions";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import CloseIcon from "@mui/icons-material/Close";
+import CartProduct from "./CartProduct";
 
-const Header = () => {
+const Header = ({ removeFromCart, cartItems }) => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  const checkOutFunction = () => {
+    let message = "Hi, I am interested in the following products:\n";
+
+    cartItems.forEach((item) => {
+      message += `\nProduct: ${item.name}\nPrice: ₦${item.price}\nImage: ${item.image}\n`;
+    });
+
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "+2347037102658"; // Replace with your number
+    return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  };
+
+  // Checkout button click handler
+  const handleCheckoutClick = () => {
+    window.open(checkOutFunction(), "_blank");
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsSticky(scrollPosition > 600); // Adjust the value based on when you want it fixed
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [test, setTest] = useState(false);
   const phoneNumber = "+2347037102658";
@@ -56,8 +92,67 @@ const Header = () => {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const numberOfItems = cartItems.length;
+
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (open) => {
+    setOpen(open);
+  };
+
+  const list = () => (
+    <Box
+      sx={{
+        width: 400,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        py: 3,
+      }}
+      role="presentation"
+      // onClick={() => toggleDrawer(false)}
+      onKeyDown={() => toggleDrawer(false)}
+    >
+      <ToolBar>
+        <Title>
+          Cart<span>(0)</span>
+        </Title>
+        <Cancle>
+          <CloseIcon onClick={() => toggleDrawer(false)} />
+        </Cancle>
+      </ToolBar>
+      <Content>
+        {cartItems.length === 0 ? (
+          <NotFound>
+            <NotImage src="/assets/notFound.jpg" alt="no item found" />
+            <p>No items in the cart.</p>
+          </NotFound>
+        ) : (
+          <div
+            style={{
+              width: "100%",
+            }}
+          >
+            {cartItems.map((item, index) => (
+              <CartProduct
+                key={index}
+                details="Still In Stock"
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                onDelete={() => removeFromCart(index)}
+              />
+            ))}
+          </div>
+        )}
+      </Content>
+      <CheckOut onClick={handleCheckoutClick}>Check out</CheckOut>
+    </Box>
+  );
+
   return (
-    <Container id="header">
+    <Container id="header" className={isSticky ? "header sticky" : ""}>
       <Wrapper>
         <LogoHolder>
           <Logo src="/assets/asset1.png" alt="logo" />
@@ -98,8 +193,9 @@ const Header = () => {
           </Links>
         </Linker>
         <Buttons>
-          <Button>
+          <Button onClick={() => toggleDrawer(true)}>
             <PiShoppingCartThin />
+            <span>{numberOfItems}</span>
           </Button>
           <Button
             style={{
@@ -166,6 +262,10 @@ const Header = () => {
           </InnerWrapper>
         </Menu>
       </Wrapper>
+
+      <Drawer anchor="right" open={open} onClose={() => toggleDrawer(false)}>
+        {list()}
+      </Drawer>
     </Container>
   );
 };
@@ -188,6 +288,63 @@ const vanish = keyframes`
   to {
     opacity: 0;
   }
+`;
+
+// const ToolBar = styled.div``
+
+const CheckOut = styled.div`
+  background-color: #2b2b2b;
+  padding: 14px 0;
+  width: 90%;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  cursor: pointer;
+`;
+
+const NotImage = styled.img`
+  height: 250px;
+  opacity: 0.5;
+`;
+
+const NotFound = styled.div`
+  text-align: center;
+  p {
+    font-family: "exo";
+  }
+`;
+
+const Content = styled.div`
+  width: 90%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+`;
+
+const Cancle = styled.div`
+  cursor: pointer;
+`;
+
+const Title = styled.div`
+  font-family: "exo", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  span {
+    margin-left: 5px;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+`;
+
+const ToolBar = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Background = styled.div`
@@ -327,6 +484,15 @@ const Container = styled.div`
   justify-content: center;
   height: 100px;
   width: 100%;
+
+  &.header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
 `;
 
 const LogoHolder = styled.div`
@@ -411,8 +577,24 @@ const Button = styled.div`
   margin: 10px;
   line-height: 0;
   cursor: pointer;
+  position: relative;
   box-shadow: 0px 6px 18px 2px rgba(0, 0, 0, 0.1);
   @media screen and (max-width: 1024px) {
     margin-right: 30px;
+  }
+  span {
+    position: absolute;
+    background-color: rgb(202, 2, 2);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    color: white;
+    font-size: 14px;
+    top: -10px;
+    right: -10px;
   }
 `;

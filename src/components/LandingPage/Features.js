@@ -6,6 +6,7 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { PiSunBold } from "react-icons/pi";
 import { GiBatteryPackAlt } from "react-icons/gi";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Features = () => {
   return (
@@ -25,7 +26,7 @@ const Features = () => {
             Enjoy uninterrupted energy with our durable and efficient battery
             solutions.
           </Text>
-          <Button>
+          <Button to="/about_page">
             Learn More{" "}
             <span>
               <FaArrowRightLong />
@@ -41,7 +42,7 @@ const Features = () => {
             Harness the power of the sun for a sustainable and eco-friendly
             future.
           </Text>
-          <Button>
+          <Button to="/about_page">
             Learn more{" "}
             <span>
               <FaArrowRightLong />
@@ -56,7 +57,7 @@ const Features = () => {
           <Text>
             Our systems are built for consistent and dependable energy delivery.
           </Text>
-          <Button>
+          <Button to="/about_page">
             Learn more{" "}
             <span>
               <FaArrowRightLong />
@@ -71,7 +72,7 @@ const Features = () => {
           <Text>
             Get access to professional maintenance and support services.
           </Text>
-          <Button>
+          <Button to="/about_page">
             Learn more{" "}
             <span>
               <FaArrowRightLong />
@@ -267,11 +268,13 @@ const Text = styled.div`
   line-height: 1.4;
 `;
 
-const Button = styled.div`
+const Button = styled(Link)`
   margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: unset;
   span {
     line-height: 0;
     padding: 0;

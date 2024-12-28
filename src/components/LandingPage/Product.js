@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { TopHeadIcon } from "../SVG/SVGs";
 import { PiShoppingCartThin } from "react-icons/pi";
-import { FaRegEye } from "react-icons/fa";
 import data from "../data.json";
 import { DefaultButton } from "../Actions";
 import { Link } from "react-router-dom";
 
-const Product = () => {
+const Product = ({ addToCart }) => {
   const name = "All In One";
   const phoneNumber = "+2347037102658";
   const price = "₦250,000";
@@ -18,6 +17,7 @@ const Product = () => {
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
+
   return (
     <Container id="product">
       <Wrapper>
@@ -32,20 +32,21 @@ const Product = () => {
               <ImageHolder>
                 <Image src={product.image} alt="product image" />
               </ImageHolder>
-              <Bottom>
+              <Bottom
+                className="product_card"
+                onClick={() => addToCart(product)}
+              >
                 <Icons>
+                  <span>Add to cart </span>{" "}
                   <Order>
-                    <a
+                    {/* <a
                       href={createWhatsAppLink()}
                       target="_blank"
                       rel="noopener noreferrer"
-                    >
-                      <PiShoppingCartThin />
-                    </a>
+                    > */}
+                    <PiShoppingCartThin />
+                    {/* </a> */}
                   </Order>
-                  <View>
-                    <FaRegEye />
-                  </View>
                 </Icons>
                 <Name>{product.name}</Name>
                 <Price>{product.price}</Price>
@@ -53,8 +54,15 @@ const Product = () => {
             </ProductCard>
           ))}
         </Products>
-        <Linker to="/productPage">
-          <DefaultButton text="See More" />
+        <Linker>
+          <Link
+            to="/productPage"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <DefaultButton text="See More" />
+          </Link>
         </Linker>
       </Wrapper>
     </Container>
@@ -179,7 +187,7 @@ const Price = styled.div`
   margin-top: 18px;
   font-size: 20px;
   font-weight: 500;
-  color: #23769e;
+  opacity: 0.7;
 `;
 
 const Bottom = styled.div`
@@ -195,27 +203,30 @@ const Bottom = styled.div`
 const Icons = styled.div`
   margin-bottom: 14px;
   display: flex;
+  align-items: center;
   z-index: 1;
-  opacity: 0.7;
+  cursor: pointer;
+  /* color: #7c0029; */
+  color: #23769e;
+
   transition: all 500ms;
+  span {
+    margin-right: 10px;
+  }
   &:hover {
     opacity: 1;
   }
 `;
 
 const Order = styled.div`
-  margin-right: 10px;
+  line-height: 0;
   cursor: pointer;
   a {
     color: unset;
   }
 `;
 
-const View = styled.div`
-  cursor: pointer;
-`;
-
-const Linker = styled(Link)`
+const Linker = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 50px;

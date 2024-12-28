@@ -5,7 +5,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import Header from "./components/LandingPage/Header";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProductPage from "./components/ProductPage/ProductPage";
 
@@ -24,7 +23,6 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/productPage" element={<ProductPage />} />
