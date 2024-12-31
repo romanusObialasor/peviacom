@@ -110,8 +110,6 @@ const Products = styled.div`
   }
 `;
 
-const ProductLeft = styled.div``;
-
 const ToolBar = styled.div`
   margin-bottom: 40px;
   @media screen and (max-width: 425px) {

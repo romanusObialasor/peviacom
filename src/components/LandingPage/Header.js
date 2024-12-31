@@ -16,11 +16,11 @@ const Header = ({ removeFromCart, cartItems }) => {
     let message = "Hi, I am interested in the following products:\n";
 
     cartItems.forEach((item) => {
-      message += `\nProduct: ${item.name}\nPrice: ₦${item.price}\nImage: ${item.image}\n`;
+      message += `\nProduct: ${item.name}\nPrice: ₦${item.price}\nImage: https://peviacom-test.vercel.app${item.image}\n`;
     });
 
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "+2347037102658"; // Replace with your number
+    const phoneNumber = "+2348084274608"; // Replace with your number
     return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
 
@@ -44,7 +44,7 @@ const Header = ({ removeFromCart, cartItems }) => {
 
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [test, setTest] = useState(false);
-  const phoneNumber = "+2347037102658";
+  const phoneNumber = "+2348084274608";
 
   const createWhatsAppLink = () => {
     const message = `Hi there, I would love to discuss the products offered by Peviacom in more detail`;
