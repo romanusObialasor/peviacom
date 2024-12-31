@@ -16,7 +16,9 @@ const Header = ({ removeFromCart, cartItems }) => {
     let message = "Hi, I am interested in the following products:\n";
 
     cartItems.forEach((item) => {
-      message += `\nProduct: ${item.name}\nPrice: ₦${item.price}\nImage: https://peviacom-test.vercel.app${item.image}\n`;
+      const image = item.image;
+      const encodedImage = image.replace(/ /g, "%20");
+      message += `\nProduct: ${item.name}\nPrice: ₦${item.price}\nImage: https://peviacom-test.vercel.app${encodedImage}\n`;
     });
 
     const encodedMessage = encodeURIComponent(message);
