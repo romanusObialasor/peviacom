@@ -57,7 +57,7 @@ export default function CartProduct({ image, name, details, price, onDelete }) {
           variant="subtitle1"
           component="div"
         >
-          {truncateText(name, 20)}
+          {truncateText(name, 15)}
         </Typography>
         <Typography variant="body2" gutterBottom>
           {details}
