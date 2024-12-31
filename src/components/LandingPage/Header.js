@@ -18,7 +18,7 @@ const Header = ({ removeFromCart, cartItems }) => {
     cartItems.forEach((item) => {
       const image = item.image;
       const encodedImage = image.replace(/ /g, "%20");
-      message += `\nProduct: ${item.name}\nPrice: ₦${item.price}\nImage: https://peviacom-test.vercel.app${encodedImage}\n`;
+      message += `\nProduct: ${item.name}\nPrice: ${item.price}\nImage: https://peviacom-test.vercel.app${encodedImage}\n`;
     });
 
     const encodedMessage = encodeURIComponent(message);

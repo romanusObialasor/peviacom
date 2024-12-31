@@ -227,6 +227,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  @media screen and (max-width: 425px) {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 const TextHolder = styled.div`
@@ -234,6 +237,14 @@ const TextHolder = styled.div`
   text-align: right;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 30px;
+  @media screen and (max-width: 425px) {
+    margin: 0;
+    width: 100%;
+    background-color: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 `;
 
 const Head = styled.div`
@@ -244,6 +255,11 @@ const Text = styled.div`
   max-width: 500px;
   font-size: 24px;
   opacity: 0.7;
+  @media screen and (max-width: 425px) {
+    max-width: unset;
+    width: 300px;
+    font-size: 20px;
+  }
 `;
 
 const Container = styled.div`

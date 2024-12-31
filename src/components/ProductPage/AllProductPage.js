@@ -22,10 +22,10 @@ const ProductCard = ({ image, name, price, item, addToCart }) => {
           {price}
         </Typography>
         <AddToCartButton
+          id="button"
           variant="outlined"
           onClick={() => {
             addToCart(item);
-            console.log("romanus");
           }}
         >
           Add to Cart
