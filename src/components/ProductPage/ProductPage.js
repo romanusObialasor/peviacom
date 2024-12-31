@@ -5,7 +5,8 @@ import "./Product.css";
 import AllProducts from "./AllProductPage";
 import SearchInput from "./SearchInput";
 import Footer from "../LandingPage/Footer";
-// import Header from "../LandingPage/Header";
+import Header from "../LandingPage/Header";
+import data from "../data.json";
 
 const images = [
   "/assets/services1.jpg",
@@ -22,9 +23,42 @@ const ProductPage = () => {
     }, 3000); // Change image every 3 seconds
     return () => clearInterval(timer);
   }, []);
+
+  const [cart, setCart] = useState(() => {
+    // Load cart data from localStorage on initial render
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // Function to add items to the cart
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
+      return updatedCart;
+    });
+  };
+
+  const removeFromCart = (index) => {
+    const updatedCart = cart.filter((item, i) => i !== index); // Remove item at the given index
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
+  };
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <Container>
-      {/* <Header /> */}
+      <Header cartItems={cart} removeFromCart={removeFromCart} />
       <TopWrapper>
         <Left>
           <LeftWrapper>
@@ -65,37 +99,21 @@ const ProductPage = () => {
       <Bottom>
         <BottomWrapper>
           <ToolBar>
-            <SearchInput />
+            <SearchInput
+              setSearchTerm={setSearchTerm}
+              searchTerm={searchTerm}
+            />
           </ToolBar>
           <Products>
-            <ProductLeft>
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-            </ProductLeft>
-            <ProductLeft>
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-              <AllProducts />
-            </ProductLeft>
+            {filteredData.map((item) => (
+              <AllProducts
+                key={item.id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                item={item}
+              />
+            ))}
           </Products>
         </BottomWrapper>
       </Bottom>
@@ -110,6 +128,7 @@ const Products = styled.div`
   display: flex;
   justify-content: space-around;
   width: 85%;
+  flex-wrap: wrap;
   @media screen and (max-width: 425px) {
     flex-direction: column;
   }

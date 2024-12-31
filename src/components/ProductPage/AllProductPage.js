@@ -1,104 +1,117 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import ButtonBase from "@mui/material/ButtonBase";
-import { PiShoppingCartThin } from "react-icons/pi";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { Box, Button, Typography } from "@mui/material";
 
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  maxWidth: "100%",
-  maxHeight: "100%",
-});
+const ProductCard = ({ image, name, price, item }) => {
+  const [cart, setCart] = useState(() => {
+    // Load cart data from localStorage on initial render
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-export default function AllProducts() {
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
+      return updatedCart;
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
-    <Paper
-      sx={(theme) => ({
-        p: 2,
-        m: 3,
-        // margin: "auto",
-        maxWidth: 500,
-        flexGrow: 1,
-        borderRadius: 2,
-        backgroundColor: "#fff",
-        ...theme.applyStyles("dark", {
-          backgroundColor: "#1A2027",
-        }),
-      })}
-    >
-      <Grid container spacing={2}>
-        <Grid item>
-          <ButtonBase sx={{ width: 128, height: 128 }}>
-            <Img alt="complex" src="/assets/productTest.jpeg" />
-          </ButtonBase>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm
-          container
-          sx={{
-            mt: 2,
+    <CardContainer>
+      <ImageHolder>
+        <Image src={image} alt="product image" />
+      </ImageHolder>
+      <CardContent>
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "600", fontFamily: "exo", fontSize: 20 }}
+        >
+          {name}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ color: "grey.600", mt: 1, marginBottom: 5 }}
+        >
+          {price}
+        </Typography>
+        <AddToCartButton
+          variant="outlined"
+          onClick={() => {
+            addToCart(item);
+            console.log("romanus");
           }}
         >
-          <Grid
-            sx={{
-              ml: 1,
-            }}
-            item
-            xs
-            container
-            direction="column"
-            spacing={2}
-          >
-            <Grid item xs>
-              <Typography
-                sx={{ fontSize: "20px", fontWeight: 600, fontFamily: "exo" }}
-                gutterBottom
-                variant="subtitle1"
-                component="div"
-              >
-                Solar Inverter 1.0KVA
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Uninterrupted Power
-              </Typography>
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                ID: 1030114
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{ cursor: "pointer", fontSize: "20px" }}
-                variant="body2"
-              >
-                <PiShoppingCartThin />
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              fontSize: 3,
-            }}
-          >
-            <Typography
-              fontWeight="600"
-              fontSize="20px"
-              variant="subtitle1"
-              component="div"
-              color="#23769E"
-            >
-              ₦270,000
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Paper>
+          Add to Cart
+        </AddToCartButton>
+      </CardContent>
+    </CardContainer>
   );
-}
+};
+
+export default ProductCard;
+
+// Styled Components
+const CardContainer = styled(Box)`
+  width: 280px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.2s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const ImageHolder = styled.div`
+  background-image: url("/assets/asset20.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 170px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.27);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+`;
+
+const CardContent = styled(Box)`
+  padding: 16px;
+  text-align: center;
+`;
+
+const AddToCartButton = styled(Button)`
+  width: 100%;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: none;
+  margin-top: 10px;
+`;

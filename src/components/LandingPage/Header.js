@@ -116,24 +116,21 @@ const Header = ({ removeFromCart, cartItems }) => {
     >
       <ToolBar>
         <Title>
-          Cart<span>(0)</span>
+          Cart<span>({numberOfItems})</span>
         </Title>
         <Cancle>
           <CloseIcon onClick={() => toggleDrawer(false)} />
         </Cancle>
       </ToolBar>
-      <Content>
-        {cartItems.length === 0 ? (
-          <NotFound>
-            <NotImage src="/assets/notFound.jpg" alt="no item found" />
-            <p>No items in the cart.</p>
-          </NotFound>
-        ) : (
-          <div
-            style={{
-              width: "100%",
-            }}
-          >
+
+      {cartItems.length === 0 ? (
+        <NotFound>
+          <NotImage src="/assets/notFound.jpg" alt="no item found" />
+          <p>No items in the cart.</p>
+        </NotFound>
+      ) : (
+        <Content>
+          <Cards>
             {cartItems.map((item, index) => (
               <CartProduct
                 key={index}
@@ -144,10 +141,10 @@ const Header = ({ removeFromCart, cartItems }) => {
                 onDelete={() => removeFromCart(index)}
               />
             ))}
-          </div>
-        )}
-      </Content>
-      <CheckOut onClick={handleCheckoutClick}>Check out</CheckOut>
+          </Cards>
+          <CheckOut onClick={handleCheckoutClick}>Check out</CheckOut>
+        </Content>
+      )}
     </Box>
   );
 
@@ -202,7 +199,15 @@ const Header = ({ removeFromCart, cartItems }) => {
               marginRight: "20px",
             }}
           >
-            <CiLocationOn />
+            <a
+              href="https://www.google.com/maps/dir//123,+6+Milaco+Plaza+123%2F125+Ago+Palace+Way+Ilasamaja+Lagos+NG,+123%2F125+Ago+Palace+Way,+Ilasamaja,+Lagos/@6.5023265,3.222403,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x103b8eddc6704243:0xfaf3dcc893f6f183!2m2!1d3.3047728!2d6.5023693?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              style={{
+                color: "unset",
+              }}
+            >
+              <CiLocationOn />
+            </a>
           </Button>
           <a
             href={createWhatsAppLink()}
@@ -290,7 +295,9 @@ const vanish = keyframes`
   }
 `;
 
-// const ToolBar = styled.div``
+const Cards = styled.div`
+  width: 100%;
+`;
 
 const CheckOut = styled.div`
   background-color: #2b2b2b;
@@ -310,6 +317,12 @@ const NotImage = styled.img`
 
 const NotFound = styled.div`
   text-align: center;
+  width: 90%;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   p {
     font-family: "exo";
   }
@@ -321,8 +334,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 80vh;
+  justify-content: space-between;
+  min-height: 80vh;
 `;
 
 const Cancle = styled.div`

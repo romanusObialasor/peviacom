@@ -23,7 +23,7 @@ export default function CartProduct({ image, name, details, price, onDelete }) {
         backgroundColor: "#fff",
         display: "flex",
         alignItems: "center",
-        // width: ,
+        width: "90%",
         justifyContent: "space-between",
         mb: 2,
         boxShadow: "0 3px 5px 1px rgba(0,0,0,0.1)",

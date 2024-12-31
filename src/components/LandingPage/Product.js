@@ -7,17 +7,6 @@ import { DefaultButton } from "../Actions";
 import { Link } from "react-router-dom";
 
 const Product = ({ addToCart }) => {
-  const name = "All In One";
-  const phoneNumber = "+2347037102658";
-  const price = "₦250,000";
-  const imageUrl = "https://peviacom.com/images/dc_system.png";
-
-  const createWhatsAppLink = () => {
-    const message = `Hi, I am interested in the product "${name}" priced at $${price}. Here is the image: ${imageUrl}`;
-    const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-  };
-
   return (
     <Container id="product">
       <Wrapper>
@@ -27,7 +16,7 @@ const Product = ({ addToCart }) => {
         </Head>
         <SubHead>Explore Our Premium Products</SubHead>
         <Products>
-          {data.map((product) => (
+          {data.slice(0, 4).map((product) => (
             <ProductCard key={product.id}>
               <ImageHolder>
                 <Image src={product.image} alt="product image" />
@@ -39,13 +28,7 @@ const Product = ({ addToCart }) => {
                 <Icons>
                   <span>Add to cart </span>{" "}
                   <Order>
-                    {/* <a
-                      href={createWhatsAppLink()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    > */}
                     <PiShoppingCartThin />
-                    {/* </a> */}
                   </Order>
                 </Icons>
                 <Name>{product.name}</Name>

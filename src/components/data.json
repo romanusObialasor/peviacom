@@ -1,30 +1,197 @@
-[
-    {
+    [{
       "id": 1,
-      "image": "/assets/asset13.jpeg",
-      "name": "Solar Inverter 1.0KVA",
-      "price": "₦270,000",
+      "image": "/assets/products/Luminous 900va12v inverter.jpg",
+      "name": "Luminous 900va12v inverter ",
+      "price": "₦125,000",
       "details": "A reliable 1.0KVA solar inverter perfect for small-scale energy needs."
     },
     {
       "id": 2,
-      "image": "/assets/asset7.jpeg",
-      "name": "Deep Cycle Battery 150AH",
-      "price": "₦320,000",
+      "image": "/assets/products/Luminous 1.5kva24v inverter.jpg",
+      "name": "Luminous 1.5kva24v inverter",
+      "price": "₦198,000",
       "details": "A durable 150AH battery designed for optimal solar energy storage."
     },
     {
       "id": 3,
-      "image": "/assets/asset6.jpeg",
-      "name": "Premium Solar Panel 300W",
-      "price": "₦400,000",
+      "image": "/assets/products/Luminous 1.5kva24v hybrid inverter.jpg",
+      "name": "Luminous 1.5kva24v hybrid inverter",
+      "price": "₦275,000",
       "details": "High-efficiency 300W solar panel ideal for residential and commercial use."
     },
     {
       "id": 4,
-      "image": "/assets/asset8.jpeg",
-      "name": "Solar Street Light",
-      "price": "₦120,000",
+      "image": "/assets/products/Luminous 1.6kva24v Optimus inverter.jpg",
+      "name": "Luminous 1.6kva24v Optimus inverter",
+      "price": "₦227,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 5,
+      "image": "/assets/products/Luminous 2kva24v Optimus inverter.jpg",
+      "name": "Luminous 2kva24v Optimus inverter",
+      "price": "₦285,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 6,
+      "image": "/assets/products/Luminous 2.5kva24v Optimus.jpg",
+      "name": "Luminous 2.5kva24v Optimus",
+      "price": "₦335,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 7,
+      "image": "/assets/products/Luminous 4kva48v Optimus inverter.jpg",
+      "name": "Luminous 4kva48v Optimus inverter",
+      "price": "₦585,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 8,
+      "image": "/assets/products/Luminous 5kva48v inverter.jpg",
+      "name": "Luminous 5kva48v inverter",
+      "price": "₦985,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 9,
+      "image": "/assets/products/Luminous 6kva96v inverter.jpg",
+      "name": "Luminous 6kva96v inverter",
+      "price": "₦1,050,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 10,
+      "image": "/assets/products/Luminous 7.5kva120v inverter.jpg",
+      "name": "Luminous 7.5kva120v inverter",
+      "price": "₦1,250,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 11,
+      "image": "/assets/products/Luminous 10kva180v inverter.jpg",
+      "name": "Luminous 10kva180v inverter",
+      "price": "₦1,750,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 12,
+      "image": "/assets/products/Luminous 220ah voltcharge plus batter.jpg",
+      "name": "Luminous 220ah voltcharge plus batter",
+      "price": "₦330,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 13,
+      "image": "/assets/products/Luminous 230ah inverlast battery.jpg",
+      "name": "Luminous 230ah inverlast battery",
+      "price": "₦360,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 14,
+      "image": "/assets/products/Luminous 230ah inverlast plus battery.jpg",
+      "name": "Luminous 230ah inverlast plus battery",
+      "price": "₦370,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 15,
+      "image": "/assets/products/Luminous 220ah Voltcharge battery.jpg",
+      "name": "Luminous 220ah Voltcharge battery",
+      "price": "₦320,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 16,
+      "image": "/assets/products/Luminous 220ah NRGT signature battery.jpg",
+      "name": "Luminous 220ah NRGT signature battery",
+      "price": "₦475,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 17,
+      "image": "/assets/products/Solar fan.jpg",
+      "name": "Solar fan ",
+      "price": "₦85,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 18,
+      "image": "/assets/products/Elista 220ah battery.jpg",
+      "name": "Elista 220ah battery",
+      "price": "₦265,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 19,
+      "image": "/assets/products/Eastman 220ah battery.jpg",
+      "name": "Eastman 220ah battery",
+      "price": "₦320,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 20,
+      "image": "/assets/products/Ozoro 220ah battery.jpg",
+      "name": "Ozoro 220ah battery",
+      "price": "₦285,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 21,
+      "image": "/assets/products/Evershine 220ah battery.jpg",
+      "name": "Evershine 220ah battery",
+      "price": "₦250,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 22,
+      "image": "/assets/products/Unicron 220ah battery.jpg",
+      "name": "Unicron 220ah battery",
+      "price": "₦227,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 23,
+      "image": "/assets/products/Unicron 10kva180v.jpg",
+      "name": "Unicron 10kva180v",
+      "price": "₦1,600,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 24,
+      "image": "/assets/products/Unicorn 5.5kva48v inverter.jpg",
+      "name": "Unicorn 5.5kva48v inverter",
+      "price": "₦950,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 25,
+      "image": "/assets/products/Unicron 4kva48v inverter.jpg",
+      "name": "Unicron 4kva48v inverter",
+      "price": "₦490,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 26,
+      "image": "/assets/products/Unicorn 3kva24v inverter.jpg",
+      "name": "Unicorn 3kva24v inverter",
+      "price": "₦360,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 27,
+      "image": "/assets/products/Unicorn 2kva12v inverter.jpg",
+      "name": "Unicorn 2kva12v inverter",
+      "price": "₦245,000",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    },
+    {
+      "id": 28,
+      "image": "/assets/products/Unicron 1.1kva12v inverter.jpg",
+      "name": "Unicron 1.1kva12v inverter",
+      "price": "₦130,000",
       "details": "A smart solar-powered street light for efficient outdoor illumination."
     }
   ]
