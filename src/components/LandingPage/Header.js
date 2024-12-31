@@ -102,9 +102,8 @@ const Header = ({ removeFromCart, cartItems }) => {
   };
 
   const list = () => (
-    <Box
+    <MobileCart
       sx={{
-        width: 400,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -145,7 +144,7 @@ const Header = ({ removeFromCart, cartItems }) => {
           <CheckOut onClick={handleCheckoutClick}>Check out</CheckOut>
         </Content>
       )}
-    </Box>
+    </MobileCart>
   );
 
   return (
@@ -189,6 +188,10 @@ const Header = ({ removeFromCart, cartItems }) => {
             Reviews
           </Links>
         </Linker>
+        <ButtonMobile onClick={() => toggleDrawer(true)}>
+          <PiShoppingCartThin />
+          <span>{numberOfItems}</span>
+        </ButtonMobile>
         <Buttons>
           <Button onClick={() => toggleDrawer(true)}>
             <PiShoppingCartThin />
@@ -575,7 +578,7 @@ const Links = styled(Link)`
 const Buttons = styled.div`
   display: flex;
   align-items: center;
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 728px) {
     display: none;
   }
   a {
@@ -583,7 +586,7 @@ const Buttons = styled.div`
   }
 `;
 
-const Button = styled.div`
+const ButtonMobile = styled.div`
   padding: 20px;
   background: white;
   border-radius: 100px;
@@ -591,9 +594,13 @@ const Button = styled.div`
   line-height: 0;
   cursor: pointer;
   position: relative;
+  display: none;
   box-shadow: 0px 6px 18px 2px rgba(0, 0, 0, 0.1);
   @media screen and (max-width: 1024px) {
     margin-right: 30px;
+  }
+  @media screen and (max-width: 425px) {
+    display: block;
   }
   span {
     position: absolute;
@@ -609,5 +616,42 @@ const Button = styled.div`
     font-size: 14px;
     top: -10px;
     right: -10px;
+  }
+`;
+const Button = styled.div`
+  padding: 20px;
+  background: white;
+  border-radius: 100px;
+  margin: 10px;
+  line-height: 0;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 6px 18px 2px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 1024px) {
+    margin-right: 30px;
+  }
+
+  span {
+    position: absolute;
+    background-color: rgb(202, 2, 2);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    color: white;
+    font-size: 14px;
+    top: -10px;
+    right: -10px;
+  }
+`;
+
+const MobileCart = styled(Box)`
+  width: 400px;
+
+  @media screen and (max-width: 425px) {
+    width: 320px;
   }
 `;

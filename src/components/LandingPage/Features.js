@@ -27,7 +27,7 @@ const Features = () => {
             solutions.
           </Text>
           <Button to="/about_page">
-            Learn More{" "}
+            Shop now{" "}
             <span>
               <FaArrowRightLong />
             </span>
@@ -42,8 +42,8 @@ const Features = () => {
             Harness the power of the sun for a sustainable and eco-friendly
             future.
           </Text>
-          <Button to="/about_page">
-            Learn more{" "}
+          <Button to="/productPage">
+            Shop now{" "}
             <span>
               <FaArrowRightLong />
             </span>
@@ -58,7 +58,7 @@ const Features = () => {
             Our systems are built for consistent and dependable energy delivery.
           </Text>
           <Button to="/about_page">
-            Learn more{" "}
+            Shop now{" "}
             <span>
               <FaArrowRightLong />
             </span>
@@ -73,7 +73,7 @@ const Features = () => {
             Get access to professional maintenance and support services.
           </Text>
           <Button to="/about_page">
-            Learn more{" "}
+            Shop now{" "}
             <span>
               <FaArrowRightLong />
             </span>

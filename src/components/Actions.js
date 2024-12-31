@@ -5,9 +5,9 @@ import { IoPlay } from "react-icons/io5";
 
 // the default button
 
-export function DefaultButton({ text, show }) {
+export function DefaultButton({ text, show, clicker }) {
   return (
-    <Action>
+    <Action onClick={clicker}>
       <Animate className="animate" top />
       {show ? (
         <span>

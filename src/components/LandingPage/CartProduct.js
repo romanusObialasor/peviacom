@@ -12,6 +12,10 @@ const Img = styled("img")({
   height: "70px",
 });
 
+const truncateText = (text, maxLength) => {
+  return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+};
+
 export default function CartProduct({ image, name, details, price, onDelete }) {
   return (
     <Paper
@@ -53,7 +57,7 @@ export default function CartProduct({ image, name, details, price, onDelete }) {
           variant="subtitle1"
           component="div"
         >
-          {name}
+          {truncateText(name, 20)}
         </Typography>
         <Typography variant="body2" gutterBottom>
           {details}

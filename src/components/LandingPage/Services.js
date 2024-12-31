@@ -32,7 +32,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText to="/about_page">Read more</ButtonText>
+              <ButtonText to="/productPage">Shop now</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -52,7 +52,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText to="/about_page">Read more</ButtonText>
+              <ButtonText to="/productPage">Shop now</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -72,7 +72,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText to="/about_page">Read more</ButtonText>
+              <ButtonText to="/productPage">Shop now</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>
@@ -93,7 +93,7 @@ const Services = () => {
             </Box>
             <Read className="read">
               <span />
-              <ButtonText to="/about_page">Read more</ButtonText>
+              <ButtonText to="/productPage">Shop now</ButtonText>
             </Read>
           </DetailsHolder>
         </CardHolder>

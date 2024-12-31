@@ -11,9 +11,15 @@ const revolve = keyframes`
       transform: rotate(360deg);
     }
   `;
+
 const Hero = () => {
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.error(`Element with id '${id}' not found.`);
+    }
   };
   return (
     <Container>
@@ -30,7 +36,10 @@ const Hero = () => {
             solutions.
           </SubHead>
           <CallToAction>
-            <DefaultButton text="Discover Now" />
+            <DefaultButton
+              text="Discover Now"
+              clicker={() => scrollToSection("product")}
+            />
             <VideoButton />
           </CallToAction>
         </LeftWrapper>

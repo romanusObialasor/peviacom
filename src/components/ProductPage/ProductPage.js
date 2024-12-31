@@ -14,7 +14,7 @@ const images = [
   "/assets/asset3.jpeg",
 ];
 
-const ProductPage = () => {
+const ProductPage = ({ cart, removeFromCart, addToCart }) => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -23,32 +23,6 @@ const ProductPage = () => {
     }, 3000); // Change image every 3 seconds
     return () => clearInterval(timer);
   }, []);
-
-  const [cart, setCart] = useState(() => {
-    // Load cart data from localStorage on initial render
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
-  // Function to add items to the cart
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart, product];
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
-      return updatedCart;
-    });
-  };
-
-  const removeFromCart = (index) => {
-    const updatedCart = cart.filter((item, i) => i !== index); // Remove item at the given index
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
-  };
-
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -112,6 +86,7 @@ const ProductPage = () => {
                 name={item.name}
                 price={item.price}
                 item={item}
+                addToCart={addToCart}
               />
             ))}
           </Products>

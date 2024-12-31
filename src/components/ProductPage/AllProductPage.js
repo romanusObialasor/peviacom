@@ -2,25 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Box, Button, Typography } from "@mui/material";
 
-const ProductCard = ({ image, name, price, item }) => {
-  const [cart, setCart] = useState(() => {
-    // Load cart data from localStorage on initial render
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart, product];
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Save updated cart to localStorage
-      return updatedCart;
-    });
-  };
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
+const ProductCard = ({ image, name, price, item, addToCart }) => {
   return (
     <CardContainer>
       <ImageHolder>

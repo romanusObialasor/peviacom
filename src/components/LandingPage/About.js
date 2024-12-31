@@ -46,7 +46,7 @@ const About = () => {
             needs.
           </Text>
           <Link
-            to="about_page"
+            to="/productPage"
             style={{
               textDecoration: "none",
             }}
