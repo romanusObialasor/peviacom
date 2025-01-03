@@ -159,8 +159,9 @@ const Header = ({ removeFromCart, cartItems }) => {
           <Links to="/">Home</Links>
           <Links
             to="/"
-            onClick={() => {
+            onClick={(event) => {
               scrollToSection("product");
+              handleChange(event);
             }}
           >
             Products
@@ -252,10 +253,39 @@ const Header = ({ removeFromCart, cartItems }) => {
             <MenuLogo src="/assets/asset1.png" alt="logo" />
             <MenuLinker>
               <Links to="/">Home</Links>
-              <Links>Products</Links>
-              <Links>About</Links>
-              <Links>Services</Links>
-              <Links>Reviews</Links>
+              <Links
+                to="/"
+                onClick={() => {
+                  scrollToSection("product");
+                }}
+                onChange={handleChange}
+              >
+                Products
+              </Links>
+              <Links
+                to="/"
+                onClick={() => {
+                  scrollToSection("about");
+                }}
+              >
+                About
+              </Links>
+              <Links
+                to="/"
+                onClick={() => {
+                  scrollToSection("services");
+                }}
+              >
+                Services
+              </Links>
+              <Links
+                to="/"
+                onClick={() => {
+                  scrollToSection("reviews");
+                }}
+              >
+                Reviews
+              </Links>
             </MenuLinker>
             <MenuButtons>
               <Button>
