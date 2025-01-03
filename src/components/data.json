@@ -194,5 +194,12 @@
       "price": "₦130,000",
       "details": "A smart solar-powered street light for efficient outdoor illumination."
     }
+    {
+      "id": 30,
+      "image": "/assets/products/From 180W to 600W solar panel.jpg",
+      "name": "From 180W to 600W solar panel",
+      "price": "Varying prices",
+      "details": "A smart solar-powered street light for efficient outdoor illumination."
+    }
   ]
   
