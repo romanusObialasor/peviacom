@@ -252,7 +252,15 @@ const Header = ({ removeFromCart, cartItems }) => {
           <InnerWrapper>
             <MenuLogo src="/assets/asset1.png" alt="logo" />
             <MenuLinker>
-              <Links to="/">Home</Links>
+              <Links
+                to="/"
+                onClick={(event) => {
+                  scrollToSection("header");
+                  handleChange(event);
+                }}
+              >
+                Home
+              </Links>
               <Links
                 to="/"
                 onClick={(event) => {
@@ -292,15 +300,24 @@ const Header = ({ removeFromCart, cartItems }) => {
               </Links>
             </MenuLinker>
             <MenuButtons>
-              <Button>
+              <Button onClick={() => toggleDrawer(true)}>
                 <PiShoppingCartThin />
+                <span>{numberOfItems}</span>
               </Button>
               <Button
                 style={{
                   marginRight: "20px",
                 }}
               >
-                <CiLocationOn />
+                <a
+                  href="https://www.google.com/maps/dir//123,+6+Milaco+Plaza+123%2F125+Ago+Palace+Way+Ilasamaja+Lagos+NG,+123%2F125+Ago+Palace+Way,+Ilasamaja,+Lagos/@6.5023265,3.222403,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x103b8eddc6704243:0xfaf3dcc893f6f183!2m2!1d3.3047728!2d6.5023693?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  style={{
+                    color: "unset",
+                  }}
+                >
+                  <CiLocationOn />
+                </a>
               </Button>
             </MenuButtons>
           </InnerWrapper>

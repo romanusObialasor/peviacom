@@ -26,7 +26,7 @@ const Features = () => {
             Enjoy uninterrupted energy with our durable and efficient battery
             solutions.
           </Text>
-          <Button to="/about_page">
+          <Button to="/productPage">
             Shop now{" "}
             <span>
               <FaArrowRightLong />
@@ -57,7 +57,7 @@ const Features = () => {
           <Text>
             Our systems are built for consistent and dependable energy delivery.
           </Text>
-          <Button to="/about_page">
+          <Button to="/productPage">
             Shop now{" "}
             <span>
               <FaArrowRightLong />
@@ -72,7 +72,7 @@ const Features = () => {
           <Text>
             Get access to professional maintenance and support services.
           </Text>
-          <Button to="/about_page">
+          <Button to="/productPage">
             Shop now{" "}
             <span>
               <FaArrowRightLong />

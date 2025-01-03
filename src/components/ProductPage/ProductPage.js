@@ -39,9 +39,7 @@ const ProductPage = ({ cart, removeFromCart, addToCart }) => {
             <LeftH2>December Deals</LeftH2>
             <LeftH1>30% Off Solar Solutions!</LeftH1>
             <LeftP>+ Free Installation Services (₦150k value)</LeftP>
-            <LeftButton>
-              <DefaultButton text="shop now" />
-            </LeftButton>
+            <LeftButton>{/* <DefaultButton text="shop now" /> */}</LeftButton>
           </LeftWrapper>
         </Left>
         <Right>
