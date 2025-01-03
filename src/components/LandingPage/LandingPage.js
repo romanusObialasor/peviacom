@@ -12,7 +12,13 @@ import Header from "./Header";
 
 const LandingPage = ({ cart, removeFromCart, addToCart }) => {
   return (
-    <div>
+    <div
+      style={
+        {
+          // background: "red",
+        }
+      }
+    >
       <Header cartItems={cart} removeFromCart={removeFromCart} />
       <Hero />
       <Product addToCart={addToCart} />

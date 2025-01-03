@@ -79,7 +79,7 @@ const Footer = () => {
   ];
 
   return (
-    <Container>
+    <Container id="footer">
       <TopComponent>
         <TopWrapper>
           <TopText>Peviacom believes in sustainable energy practices</TopText>
@@ -185,22 +185,23 @@ const Footer = () => {
         <Box>
           <Header>Our Services</Header>
           {items.map((item, index) => (
-            <Link
-              to="/about_Page"
+            <Text
               key={index}
               style={{
-                textDecoration: "none",
+                cursor: "unset",
               }}
             >
-              {" "}
-              {/* Route to the about_Page */}
-              <Text>
-                <Arrow>
-                  <IoArrowForward />{" "}
-                </Arrow>
-                <span>{item}</span>
-              </Text>
-            </Link>
+              <Arrow>
+                <IoArrowForward />{" "}
+              </Arrow>
+              <span
+                style={{
+                  cursor: "unset",
+                }}
+              >
+                {item}
+              </span>
+            </Text>
           ))}
         </Box>
         <Right onSubmit={handleSubmit}>
@@ -247,7 +248,7 @@ const TopComponent = styled.div`
   display: flex;
 
   @media screen and (max-width: 768px) {
-    z-index: -1;
+    /* z-index: -1; */
     height: 500px;
     top: -360px;
   }
@@ -358,7 +359,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   @media screen and (max-width: 768px) {
-    z-index: -1;
+    /* z-index: -1; */
   }
 `;
 
