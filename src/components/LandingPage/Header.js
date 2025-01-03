@@ -159,9 +159,9 @@ const Header = ({ removeFromCart, cartItems }) => {
           <Links to="/">Home</Links>
           <Links
             to="/"
-            onClick={(event) => {
+            onClick={() => {
               scrollToSection("product");
-              handleChange(event);
+              //hey chat i want to add the function here
             }}
           >
             Products
@@ -255,33 +255,37 @@ const Header = ({ removeFromCart, cartItems }) => {
               <Links to="/">Home</Links>
               <Links
                 to="/"
-                onClick={() => {
+                onClick={(event) => {
                   scrollToSection("product");
+
+                  handleChange(event);
                 }}
-                onChange={handleChange}
               >
                 Products
               </Links>
               <Links
                 to="/"
-                onClick={() => {
+                onClick={(event) => {
                   scrollToSection("about");
+                  handleChange(event);
                 }}
               >
                 About
               </Links>
               <Links
                 to="/"
-                onClick={() => {
+                onClick={(event) => {
                   scrollToSection("services");
+                  handleChange(event);
                 }}
               >
                 Services
               </Links>
               <Links
                 to="/"
-                onClick={() => {
+                onClick={(event) => {
                   scrollToSection("reviews");
+                  handleChange(event);
                 }}
               >
                 Reviews
